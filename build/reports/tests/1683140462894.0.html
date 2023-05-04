@@ -1,0 +1,289 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is for automation practice">
+	<meta name="robots" content="index">
+	<meta name="keywords" content="Automation Exercise / Automation Practice / Practice website for automation / demo website for practice / dummy website for testing / testing website / dummy website for practice automation / API Testing / API automation">
+	<meta name="google-site-verification" content="VS1KtEV7m0Pp9MRMwCpyR7rGwUVYH6N8l1zoVepsGWs">
+
+    <title>Automation Exercise - Checkout</title>
+
+	
+
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+	<link href="/static/css/main.css" rel="stylesheet">
+	<link href="/static/css/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="/static/css/cart.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/static/images/home/short_logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/images/ico/apple-touch-icon-57-precomposed.png">
+
+	<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202304270101/reactive_library_fy2021.js?bust=31074265"></script><script src="https://partner.googleadservices.com/gampad/cookie.js?domain=www.automationexercise.com&amp;callback=_gfp_s_&amp;client=ca-pub-1677597403311019&amp;cookie=ID%3D9ef42301792513e7-220794372bdd00eb%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaEceW7dTOCwdqLgMmS2zqyLUaXyA&amp;gpic=UID%3D00000be780bd2ede%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaePiO-mMy5T5q3KhZ-IlMBUbEq3A"></script><script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202304270101/show_ads_impl_fy2021.js?bust=31074265" id="google_shimpl"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1677597403311019" crossorigin="anonymous" data-checked-head="true"></script>
+
+
+	<style>
+          /* Extra small devices (phones, 600px and down) */
+            @media only screen and (max-width: 600px) {
+				.product_image {
+					margin-left: -25px;
+				}
+
+				.cart_delete {
+					display: block;
+					margin-right: 0px;
+					overflow: hidden;
+				}
+            }
+
+            /* Small devices (portrait tablets and large phones, 600px and up) */
+            @media only screen and (min-width: 600px) and (max-width: 768px) {
+
+            }
+
+            /* Medium devices (landscape tablets, 768px and up) */
+            @media only screen and (min-width: 768px) {
+
+            }
+
+            /* Large devices (laptops/desktops, 992px and up) */
+            @media only screen and (min-width: 992px) {
+            	.check_out {
+					margin-left: 900px;
+					margin-top: -30px;
+            	}
+            }
+
+            /* Extra large devices (large laptops and desktops, 1200px and up) */
+            @media only screen and (min-width: 1200px) {
+				.check_out {
+					margin-left: 900px;
+					margin-top: -30px;
+            	}
+            }
+      </style>
+
+<meta http-equiv="origin-trial" content="A0VQgOQvA+kwCj319NCwgf8+syUgEQ8/LLpB8RxxlRC3AkJ9xx8IAvVuQ/dcwy0ok7sGKufLLu6WhsXbQR9/UwwAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A6kRo9zXJhOvsR4D/VeZ9CiApPAxnOGzBkW88d8eIt9ex2oOzlX+AoUk/BS50Y9Ysy2jwyHR49Mb7XwP+l9yygIAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3mbHZoS4VJtJ8j1aE8+Z9vaGf/oMV1eTNIWMrvGqWgNnOmvaxnRGliqKIZU2eiTzCj5Qpz8B1/UTTLuony5bAAAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><link rel="preload" href="https://adservice.google.ca/adsid/integrator.js?domain=www.automationexercise.com" as="script"><script type="text/javascript" src="https://adservice.google.ca/adsid/integrator.js?domain=www.automationexercise.com"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.automationexercise.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.automationexercise.com"></script><link rel="preload" href="https://adservice.google.ca/adsid/integrator.js?domain=www.automationexercise.com" as="script"><script type="text/javascript" src="https://adservice.google.ca/adsid/integrator.js?domain=www.automationexercise.com"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.automationexercise.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.automationexercise.com"></script></head>
+
+
+
+<body style="padding: 0px 0px 154px;">
+
+
+	<header id="header">
+		<div class="header-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="/"><img src="/static/images/home/logo.png" alt="Website for automation practice"></a>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+								<li><a href="/products"><i class="material-icons card_travel" style="font-size: 16px;"></i> Products</a></li>
+								<li><a href="/view_cart" style="color: orange;"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								
+								<li><a href="/logout" style="color:brown;"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="/delete_account" style="color:brown;"><i class="fa fa-trash-o"></i> Delete Account</a></li>
+								
+								<li><a href="/test_cases"><i class="fa fa-list"></i> Test Cases</a></li>
+								<li><a href="/api_list"><i class="fa fa-list"></i> API Testing</a></li>
+								<li><a href="https://www.youtube.com/c/AutomationExercise"><i class="fa fa-youtube-play"></i> Video Tutorials</a></li>
+								<li><a href="/contact_us"><i class="fa fa-envelope"></i> Contact us</a></li>
+								
+								<li><a><i class="fa fa-user"></i> Logged in as <b>QAC_PaN</b></a></li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="/">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
+			</div>
+
+			
+			<section id="do_action">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<a class="btn btn-default check_out">Proceed To Checkout</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal HTML -->
+			<div id="checkoutModal" class="modal fade">
+				<div class="modal-dialog modal-confirm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="icon-box">
+								<i class="material-icons"></i>
+							</div>
+							<h4 class="modal-title w-100">Checkout</h4>
+						</div>
+						<div class="modal-body">
+							<p class="text-center">Register / Login account to proceed on checkout.</p>
+							<p class="text-center"><a href="/login"><u>Register / Login</u></a></p>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-success close-checkout-modal btn-block" data-dismiss="modal">Continue On Cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</section>
+			
+
+			<div class="table-responsive cart_info" id="cart_info">
+			
+				<table class="table table-condensed" id="cart_info_table">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td class="description">Description</td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+
+						
+						<tr id="product-2">
+							<td class="cart_product">
+								<a href=""><img src="get_product_picture/2" style="width:80px; height: 80px;" class="product_image" alt="Product Image"></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="/product_details/2">Men Tshirt</a></h4>
+								<p>Men &gt; Tshirts</p>
+							</td>
+							<td class="cart_price">
+								<p>Rs. 400</p>
+							</td>
+							<td class="cart_quantity">
+								<button class="disabled">2</button>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">Rs. 800</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" style="cursor: pointer;" data-product-id="2"><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+						
+						<tr id="product-28">
+							<td class="cart_product">
+								<a href=""><img src="get_product_picture/28" style="width:80px; height: 80px;" class="product_image" alt="Product Image"></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="/product_details/28">Pure Cotton V-Neck T-Shirt</a></h4>
+								<p>Men &gt; Tshirts</p>
+							</td>
+							<td class="cart_price">
+								<p>Rs. 1299</p>
+							</td>
+							<td class="cart_quantity">
+								<button class="disabled">1</button>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">Rs. 1299</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" style="cursor: pointer;" data-product-id="28"><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+
+			
+
+				<span id="empty_cart" style="display: none;">
+					<br>
+					<p class="text-center" style="font-size: 18px;"><b>Cart is empty!</b> Click <a href="/products"><u>here</u></a> to buy products.</p>
+					<br>
+				</span>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer" style="height: auto !important;">
+		<div class="footer-widget" style="height: auto !important;">
+			<div class="container" style="height: auto !important;">
+				<div class="row">
+					<div class="form-row">
+						<div class="col-md-9 hide form-group" id="success-subscribe">
+							<div class="alert-success alert">You have been successfully subscribed!</div>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>Subscription</h2>
+							<form class="searchform" method="POST">
+								<input type="hidden" name="csrfmiddlewaretoken" value="YPhX3Q8b9c9dmeVlmRf01J3iy1Hi0nsPo0hZBGz8AILYOC5eqS3lV7dr4RzCyjzp">
+								<input type="email" id="susbscribe_email" required="" placeholder="Your email address">
+								<button type="submit" id="subscribe" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br>our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+				</div><div class="google-auto-placed" style="width: 100%; height: auto; clear: none; text-align: center;"><ins data-ad-format="auto" class="adsbygoogle adsbygoogle-noablate" data-ad-client="ca-pub-1677597403311019" data-adsbygoogle-status="done" style="display: block; margin: 10px auto; background-color: transparent; height: 280px;" data-ad-status="filled"><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 280px; width: 1140px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:1140px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="1140" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-1677597403311019&amp;output=html&amp;h=280&amp;adk=4195773032&amp;adf=418843197&amp;pi=t.aa~a.2358896051~rp.4&amp;w=1140&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1683140458&amp;rafmt=1&amp;to=qs&amp;pwprc=4334590153&amp;format=1140x280&amp;url=https%3A%2F%2Fwww.automationexercise.com%2Fview_cart&amp;fwr=0&amp;pra=3&amp;rpe=1&amp;resp_fmts=3&amp;wgl=1&amp;fa=40&amp;uach=WyJtYWNPUyIsIjEzLjMuMSIsIng4NiIsIiIsIjExMi4wLjU2MTUuMTM3IixbXSxmYWxzZSxudWxsLCI2NCIsW1siQ2hyb21pdW0iLCIxMTIuMC41NjE1LjEzNyJdLFsiR29vZ2xlIENocm9tZSIsIjExMi4wLjU2MTUuMTM3Il0sWyJOb3Q6QS1CcmFuZCIsIjk5LjAuMC4wIl1dLGZhbHNlXQ..&amp;dt=1683140458226&amp;bpp=1&amp;bdt=1481&amp;idt=1&amp;shv=r20230501&amp;mjsv=m202304270101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D9ef42301792513e7-220794372bdd00eb%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaEceW7dTOCwdqLgMmS2zqyLUaXyA&amp;gpic=UID%3D00000be780bd2ede%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaePiO-mMy5T5q3KhZ-IlMBUbEq3A&amp;prev_fmts=0x0&amp;nras=2&amp;correlator=3307178756522&amp;frm=20&amp;pv=1&amp;ga_vid=479283012.1683140457&amp;ga_sid=1683140457&amp;ga_hid=1412318707&amp;ga_fc=0&amp;u_tz=-240&amp;u_his=7&amp;u_h=1050&amp;u_w=1680&amp;u_ah=941&amp;u_aw=1680&amp;u_cd=30&amp;u_sd=2&amp;dmc=8&amp;adx=30&amp;ady=865&amp;biw=1200&amp;bih=773&amp;scr_x=0&amp;scr_y=0&amp;eid=44759837%2C44773809%2C44759876%2C44759927%2C31074265%2C42531706%2C44785293%2C44788441%2C44790154&amp;oid=2&amp;pvsid=623870508334873&amp;tmod=1624374572&amp;uas=0&amp;nvt=1&amp;ref=https%3A%2F%2Fwww.automationexercise.com%2Fproducts%3Fsearch%3Dtshirts&amp;fc=1920&amp;brdim=22%2C47%2C22%2C47%2C1680%2C25%2C1200%2C897%2C1200%2C773&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=128&amp;bc=31&amp;ifi=2&amp;uci=a!2&amp;btvi=1&amp;fsb=1&amp;xpc=eLABybMePU&amp;p=https%3A//www.automationexercise.com&amp;dtd=7" data-google-container-id="a!2" data-google-query-id="CLr_genq2f4CFabM9QIdi6ABTw" data-load-complete="true"></iframe></div></ins></div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2021 All rights reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.scrollUp.min.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/main.js"></script>
+	<script src="/static/js/subscription.js"></script>
+	<script src="/static/js/cart.js"></script>
+	<script type="text/javascript">
+		$(".check_out").on("click", function() {
+			var logged_in_user = "86043";
+			if (logged_in_user) {
+				window.location = '/checkout';
+			} else {
+				$('#checkoutModal').removeClass('fade');
+           	 	$('#checkoutModal').addClass('show');
+			}
+		});
+
+		$('.close-checkout-modal').on('click', function() {
+			$('#checkoutModal').removeClass('show');
+			$('#checkoutModal').addClass('fade');
+		});
+	</script>
+
+<a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-1677597403311019&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1683140456&amp;plat=3%3A16%2C4%3A16%2C8%3A134217728%2C9%3A134250504%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.automationexercise.com%2Fview_cart&amp;ea=0&amp;pra=5&amp;wgl=1&amp;uach=WyJtYWNPUyIsIjEzLjMuMSIsIng4NiIsIiIsIjExMi4wLjU2MTUuMTM3IixbXSxmYWxzZSxudWxsLCI2NCIsW1siQ2hyb21pdW0iLCIxMTIuMC41NjE1LjEzNyJdLFsiR29vZ2xlIENocm9tZSIsIjExMi4wLjU2MTUuMTM3Il0sWyJOb3Q6QS1CcmFuZCIsIjk5LjAuMC4wIl1dLGZhbHNlXQ..&amp;dt=1683140456825&amp;bpp=3&amp;bdt=81&amp;idt=33&amp;shv=r20230501&amp;mjsv=m202304270101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D9ef42301792513e7-220794372bdd00eb%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaEceW7dTOCwdqLgMmS2zqyLUaXyA&amp;gpic=UID%3D00000be780bd2ede%3AT%3D1683140433%3ART%3D1683140433%3AS%3DALNI_MaePiO-mMy5T5q3KhZ-IlMBUbEq3A&amp;nras=1&amp;correlator=3307178756522&amp;frm=20&amp;pv=2&amp;ga_vid=479283012.1683140457&amp;ga_sid=1683140457&amp;ga_hid=1412318707&amp;ga_fc=0&amp;u_tz=-240&amp;u_his=7&amp;u_h=1050&amp;u_w=1680&amp;u_ah=941&amp;u_aw=1680&amp;u_cd=30&amp;u_sd=2&amp;dmc=8&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1200&amp;bih=818&amp;scr_x=0&amp;scr_y=0&amp;eid=44759837%2C44773809%2C44759876%2C44759927%2C31074265%2C42531706%2C44785293%2C44788441%2C44790154&amp;oid=2&amp;pvsid=623870508334873&amp;tmod=1624374572&amp;uas=0&amp;nvt=1&amp;ref=https%3A%2F%2Fwww.automationexercise.com%2Fproducts%3Fsearch%3Dtshirts&amp;fc=1920&amp;brdim=22%2C47%2C22%2C47%2C1680%2C25%2C1200%2C897%2C1200%2C818&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=46" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" data-anchor-status="displayed" style="display: block; width: 100% !important; height: 129px !important; bottom: 0px; clear: none !important; float: none !important; left: 0px; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1; overflow: visible !important; padding: 0px !important; position: fixed; right: auto !important; top: auto !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647; background: rgb(250, 250, 250) !important;" data-ad-status="filled" data-anchor-shown="true"><div class="grippy-host"></div><div id="aswift_2_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none !important; height: 124px !important; width: 100% !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: inline-block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><iframe id="aswift_2" name="aswift_2" style="width: 1005px !important; height: 124px !important; display: block; margin: 0px auto;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="1005" height="124" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/html/r20230501/r20110914/zrt_lookup.html?fsb=1#RS-0-&amp;adk=1812271801&amp;client=ca-pub-1677597403311019&amp;fa=1&amp;ifi=3&amp;uci=a!3&amp;btvi=2&amp;xpc=FIZyZKmGVd&amp;p=https%3A//www.automationexercise.com" data-google-container-id="a!3" data-google-query-id="CM-Arujq2f4CFYzG9QId-lEKXA" data-load-complete="true"></iframe></div></ins><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20230501/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>

@@ -1,0 +1,7 @@
+16:38:54.263 [main]  INFO  com.intuit.karate - Karate version: 1.4.0-SNAPSHOT
+16:38:54.785 [main]  INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 5
+16:38:56.254 [main]  ERROR com.intuit.karate - src/test/resources/features/first.feature:6
+Given I open login page
+no step-definition method match found for: I open login page
+src/test/resources/features/first.feature:6
+16:38:57.144 [main]  INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/resources/features/first.feature
